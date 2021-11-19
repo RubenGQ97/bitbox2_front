@@ -11,4 +11,9 @@
 
 li > a{
     color: rgb(240, 240, 240);
+    padding-left: 9px;
+}
+
+li > .fas{
+    color: rgb(240, 240, 240);
 }

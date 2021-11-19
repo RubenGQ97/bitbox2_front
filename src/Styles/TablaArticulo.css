@@ -1,0 +1,15 @@
+.paginaArticulos{
+    margin: 30px;
+}
+
+.form-control{
+    margin: 10px;
+}
+
+.searchButton{
+    margin-left: 80px;
+}
+
+.buscadorArticulo > *{
+    align-items: center;
+}
