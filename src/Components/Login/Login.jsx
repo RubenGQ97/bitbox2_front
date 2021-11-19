@@ -19,7 +19,6 @@ export default function Login(props){
                 <div id="formFooter">
                 <a class="underlineHover" href="#">Forgot Password?</a>
                 </div>
-
             </div>
             </div>
 
