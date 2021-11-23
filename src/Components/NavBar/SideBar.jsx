@@ -10,7 +10,7 @@ export default function SideBar (props){
                     <ul className="nav sideBarList">
                         <li className="nav-item  sideBarListItem" >
                             <i class="fas fa-archive"></i>
-                            <a class=" font-weight-bold " onClick={()=>props.handleTabSelected('inventario')} >Inventario</a>
+                            <a class=" font-weight-bold " onClick={()=>props.handleTabSelected('inventario')} >Inventario </a>
                         </li>
                         <li className="nav-item  sideBarListItem" >
                             <a class=" font-weight-bold " href="">Opcion2</a>

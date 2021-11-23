@@ -4,7 +4,7 @@ import Buscador from './Buscador';
 import '../../Styles/TablaArticulo.css'
 
 
-export default function ArticuloPage(){
+export default function ArticuloPage(props){
 
 
     return(

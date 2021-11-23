@@ -5,7 +5,18 @@ import ArticuloPage from './Articulos/ArticulosPage';
 import '../Styles/body.css'
 
 export default function Body(props){
-
+    
+    const selectTab =(tab) =>{
+        switch (tab) {
+            case 'login':
+                return <Login></Login>;
+            case 'inventario':
+                return <ArticuloPage></ArticuloPage>
+            default:
+                return <Login></Login>;
+        }
+    
+    }
 
     return(
         <div className="row body " >
@@ -16,15 +27,3 @@ export default function Body(props){
 }
 
 
-const selectTab =(tab) =>{
-
-    switch (tab) {
-        case 'login':
-            return <Login></Login>;
-        case 'inventario':
-            return <ArticuloPage></ArticuloPage>
-        default:
-            return <Login></Login>;
-    }
-
-}
