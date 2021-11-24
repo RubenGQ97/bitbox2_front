@@ -5,8 +5,8 @@ import '../../Styles/TablaArticulo.css'
 export default function Buscador(){
 
     return(
-        <div className="row-fluid">
-            <form className="buscadorArticulo">
+        <div className="row-fluid inline">
+            <form className="buscadorArticulo form-inline">
                 <div className="form-inline form-group TablaArticulos" >
                 <input class="form-control" placeholder="Codigo del articulo"></input>
                 <input class="form-control" placeholder="Descripcion"></input>

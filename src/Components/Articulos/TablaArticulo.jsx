@@ -5,35 +5,40 @@ import '../../Styles/TablaArticulo.css'
 import moment from 'moment';
 
 export default function TablaArticulo(props){
-    const array = useState([]);
-    const articulos = array[0];
-    const setArticulos = array[1];
+    
+    
 
-
-    const getData = async () => {
-        let url = 'http://localhost:8080/bitboxer2/articulos/all'
-
-        const response = await axios.get(url)
-        console.log('response', response)
-        setArticulos(response.data)
-    }
 
 
     const renderHeader = () => {
-        let headerElement = ['Detalles','Codigo', 'Descripcion', 'Estado', 'Precio', 'Fecha de Creacion','Creador']
+        let headerElement = ['','Detalles','Codigo', 'Descripcion', 'Estado', 'Precio', 'Fecha de Creacion','Creador']
 
         return headerElement.map((key, index) => {
-            return <th scope="col" key={index}>{key.toUpperCase()}</th>
+            return  <th scope="col" key={index}>{key.toUpperCase()}</th>
         })
     }
 
 
 
     const renderBody = () => {
-        return articulos && articulos.map(({ codigo, creador, descripcion, estado,fechaDeCreacion,precio }) => {
+        return props.articulos && props.articulos.map(({ codigo, creador, descripcion, estado,fechaDeCreacion,precio }) => {
             return (
                 <tr >
-                    <td><i class="fas fa-exclamation-circle"></i></td>
+                    <td>
+                        <ul className="list-inline m-0" >
+                            <li className="list-inline-item" >
+                                <button className="btn btn-success btn-sm rounded-0" type="button">
+                                <i class="fa fa-edit"></i>
+                                </button>
+                            </li>
+                            <li className="list-inline-item" >
+                            <button className="btn btn-danger btn-sm rounded-0" type="button">
+                                <i class="fa fa-trash"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                    <td><button className="btn btn-link" type="button"><i className="fas fa-exclamation-circle" ></i></button></td>
                     <td>{codigo}</td>
                     <td>{descripcion}</td>
                     <td><input type="checkbox" checked={estado} /></td>
@@ -46,9 +51,7 @@ export default function TablaArticulo(props){
     }
 
 
-    useEffect(()=>{
-        getData()
-    },[])
+
 
 
 

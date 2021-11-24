@@ -9,14 +9,15 @@ export default function SideBar (props){
                 <div className="sidebar-sticky" >
                     <ul className="nav sideBarList">
                         <li className="nav-item  sideBarListItem" >
-                            <i class="fas fa-archive"></i>
-                            <a class=" font-weight-bold " onClick={()=>props.handleTabSelected('inventario')} >Inventario </a>
+                        <button className="btn btn-primary btn-md">
+                        <i class="fas fa-archive"><a class=" font-weight-bold "  onClick={()=>props.handleTabSelected('inventario')} >Inventario </a></i>
+                        </button>
                         </li>
                         <li className="nav-item  sideBarListItem" >
-                            <a class=" font-weight-bold " href="">Opcion2</a>
-                        </li>
-                        <li className="nav-item  sideBarListItem" >
-                            <a class=" font-weight-bold " href="">Opcion3</a>
+                            <button className="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"><a class=" font-weight-bold " onClick={()=>props.handleTabSelected('crear')} >Nuevo articulo</a></i>
+                            </button>
+                            
                         </li>
                         
                     </ul>

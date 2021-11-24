@@ -5,15 +5,21 @@
 
 
 .sideBarListItem{
+    display: block;
     padding-left: 10px;
     padding-top: 20px;
 }
 
-li > a{
+i > a{
     color: rgb(240, 240, 240);
-    padding-left: 9px;
+    padding-left: 5px;
 }
 
 li > .fas{
     color: rgb(240, 240, 240);
+}
+
+
+.btn{
+    background-color: none;
 }
