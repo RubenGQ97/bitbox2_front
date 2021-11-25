@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import SideBar from './SideBar';
 import '../../Styles/Navbar.css'
 
@@ -13,7 +14,7 @@ export default function NavBar(props){
             <div className="col" >
             </div>
             <div className="col-1" >
-            <button className="btn btn-sm btn-outline-light"  type="submit" onClick={()=> props.handleTabSelected('login')} >Sign up</button>
+                <button className="btn btn-sm btn-outline-light"  type="submit" onClick={()=>props.handleTabSelected("login")}>Sign up</button>
             </div>
         </div>
         </div>

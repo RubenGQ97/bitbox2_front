@@ -30,4 +30,11 @@ td {
     text-align: center;
 }
 
+.check_buttons{
+    margin-left: 20px !important;
+}
 
+.buscadorArticulo{
+    justify-content: center;
+    margin-bottom: 0px;
+}

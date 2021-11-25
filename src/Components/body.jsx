@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import { Route,Routes } from 'react-router';
 import Login from './Login/Login';
 import SideBar from './NavBar/SideBar';
 import ArticuloPage from './Articulos/ArticulosPage';
@@ -22,6 +23,8 @@ export default function Body(props){
         <div className="row body " >
             <SideBar tab={props.tab} handleTabSelected={props.handleTabSelected}></SideBar>
             {selectTab(props.tab)}
+            
+            
         </div>
     );
 }
