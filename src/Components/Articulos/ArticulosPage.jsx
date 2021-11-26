@@ -3,6 +3,7 @@ import TablaArticulo from './TablaArticulo';
 import Buscador from './Buscador';
 import PaginaDetalleArticulo from '../Details/PaginaDetalleArticulo';
 import axios from 'axios';
+import { getToken } from '../../Utils/auth-helper';
 import '../../Styles/TablaArticulo.css'
 
 
@@ -20,9 +21,9 @@ export default function ArticuloPage(props){
     }
 
     const getData = async () => {
-        let url = 'http://localhost:8080/bitboxer2/articulos/'+peticion
-
-        const response = await axios.get(url).catch(error =>{
+        let url = 'http://localhost:8080/bitboxer2/articulos/'+peticion        
+        const response = await axios.get(url)
+        .catch(error =>{
             setPeticion("all")
         });
         if(response){
