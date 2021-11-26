@@ -3,6 +3,7 @@ import { Route,Routes } from 'react-router';
 import Login from './Login/Login';
 import SideBar from './NavBar/SideBar';
 import ArticuloPage from './Articulos/ArticulosPage';
+import fondo from '../svg/image.png';
 import '../Styles/body.css'
 
 export default function Body(props){
@@ -14,7 +15,7 @@ export default function Body(props){
             case 'inventario':
                 return <ArticuloPage></ArticuloPage>
             default:
-                return <Login></Login>;
+                return <div className="col presentation"><img src={fondo} /></div>;
         }
     
     }

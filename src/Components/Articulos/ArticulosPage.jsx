@@ -3,7 +3,6 @@ import TablaArticulo from './TablaArticulo';
 import Buscador from './Buscador';
 import PaginaDetalleArticulo from '../Details/PaginaDetalleArticulo';
 import axios from 'axios';
-import { getToken } from '../../Utils/auth-helper';
 import '../../Styles/TablaArticulo.css'
 
 
