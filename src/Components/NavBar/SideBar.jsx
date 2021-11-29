@@ -4,13 +4,20 @@ import '../../Styles/sidebar.css'
 
 
 export default function SideBar (props){
+
+    const handleChangetab = ()=>{
+        props.handleTabSelected('inventario');
+        props.setItemSelected('')
+    }
+
+
     return(
         <div className="col-1 bg-primary sidebar" >
                 <div className="sidebar-sticky" >
                     <ul className="nav sideBarList">
                         <li className="nav-item  sideBarListItem" >
                         <button className="btn btn-primary btn-md">
-                        <i class="fas fa-archive"><a class=" font-weight-bold "  onClick={()=>props.handleTabSelected('inventario')} >Inventario </a></i>
+                        <i class="fas fa-archive"><a class=" font-weight-bold "  onClick={()=>handleChangetab()} >Inventario </a></i>
                         </button>
                         </li>
                         <li className="nav-item  sideBarListItem" >

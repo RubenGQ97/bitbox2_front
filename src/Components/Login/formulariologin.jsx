@@ -4,9 +4,10 @@ import { setToken,getToken, initAxios } from '../../Utils/auth-helper';
 import '../../Styles/login.css';
 
 
-export default function FormularioLogin (){
+export default function FormularioLogin (props){
     const[userName,setUserName]= useState("UserName");
     const[password,setPassword] = useState('Password')
+    const[isLogged,setIsLogged] = useState(false)
 
     const handleLogin = async (event)=>{
         event.preventDefault();
@@ -14,15 +15,21 @@ export default function FormularioLogin (){
         try{
             
             const sesion = await login({userName,password});
-            setPassword('');
-            setUserName('');
-            setToken(sesion.jwtoken);
-            console.log(sesion);
-            console.log(getToken());
+            if(sesion){
+                setPassword('');
+                setUserName('');
+                setIsLogged(false);
+                setToken(sesion.jwtoken);
+                console.log(sesion);
+                console.log(getToken());
+                props.handleTabSelected('');
+            }
+            
         }catch(e){
             console.log("Credenciales erroneas"+e);
         }
     }
+    
 
 
     return(

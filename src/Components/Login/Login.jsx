@@ -15,7 +15,7 @@ export default function Login(props){
                 <div class="fadeIn first">
                 <Bitboxlogo></Bitboxlogo>
                 </div>
-                <FormularioLogin></FormularioLogin>
+                <FormularioLogin handleTabSelected={props.handleTabSelected} ></FormularioLogin>
                 <div id="formFooter">
                 <a class="underlineHover" href="#">Forgot Password?</a>
                 </div>

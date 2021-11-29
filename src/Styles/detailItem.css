@@ -1,0 +1,13 @@
+.tituloDetalleArticulo{
+    text-align: center;
+    width: 100%;
+}
+
+.tituloDetalleArticulo >h2{
+    color: rgb(0, 0, 0);
+}
+
+
+.groupDeatils >h2{
+    color: black;
+}

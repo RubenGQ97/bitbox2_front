@@ -1,0 +1,35 @@
+.newItemTitle{
+    color: black;
+}
+
+#formularioNuevoElemento{
+    justify-content: center;
+    padding-top: 15px;
+    text-align: center;
+}
+
+
+.col-form-label{
+    padding-right: 20px;
+}
+
+
+.form-inline{
+    margin: 20px;
+}
+
+
+
+/*
+    private Integer itemId;
+    private Integer code;
+    private String description;
+    private BigDecimal price;
+    private boolean active;
+    private Date dateOfCreation;
+    private UsuarioDTO creator;
+    private Set<ProveedorDTO> suplier;
+    private Set<ReduccionDTO> reduction;
+
+
+*/ 

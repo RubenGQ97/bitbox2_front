@@ -2,6 +2,7 @@ import Axios from 'axios';
 
 const TOKEN_KEY='BITBOXER2_FORMACION';
 
+
 export function setToken(token){
     localStorage.setItem(TOKEN_KEY,token);
 }
@@ -27,4 +28,12 @@ export function initAxios(){
 }
 
 
+
+
+
+window.onbeforeunload = function() {
+    localStorage.removeItem('BITBOXER2_FORMACION');
+    localStorage.removeItem('UserName_BITBOXER2');
+    return '';
+  };
 export default {setToken,getToken,deleteToken,initAxios}

@@ -23,3 +23,8 @@ li > .fas{
 .btn{
     background-color: none;
 }
+
+.userlooged{
+    justify-content: center;
+    color: antiquewhite;
+}

@@ -54,7 +54,7 @@ export default function TablaArticulo(props) {
 
 
     return (
-        <div className="row table-responsive">
+        <div className="row table-responsive border-top">
             <h1 id='title'>Articulos</h1>
             <table className="table table-striped ">
                 <thead>

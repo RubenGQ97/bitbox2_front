@@ -9,14 +9,14 @@ import '../../Styles/TablaArticulo.css'
 export default function ArticuloPage(props){
     const[articulos, setArticulos]= useState();
     const[peticion,setPeticion]= useState("all");
-    const[itemSelected,setItemSelected]= useState("");
+    
 
 
     const selected =()=>{
-        if(itemSelected!="") {
-            console.log(itemSelected);
-            return <PaginaDetalleArticulo itemSelected={itemSelected} ></PaginaDetalleArticulo>
-        }else return <TablaArticulo setItemSelected={setItemSelected} articulos={articulos}></TablaArticulo>
+        if(props.itemSelected!="") {
+            console.log(props.itemSelected);
+            return <PaginaDetalleArticulo setItemSelected={props.setItemSelected} itemSelected={props.itemSelected} ></PaginaDetalleArticulo>
+        }else return <TablaArticulo setItemSelected={props.setItemSelected} articulos={articulos}></TablaArticulo>
     }
 
     const getData = async () => {
