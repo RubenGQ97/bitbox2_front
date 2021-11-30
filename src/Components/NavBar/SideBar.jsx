@@ -10,6 +10,12 @@ export default function SideBar (props){
         props.setItemSelected('')
     }
 
+    const handleNewItem=()=>{
+        props.handleTabSelected('crear');
+        props.setItemSelected('');
+    }
+
+    
 
     return(
         <div className="col-1 bg-primary sidebar" >
@@ -22,7 +28,7 @@ export default function SideBar (props){
                         </li>
                         <li className="nav-item  sideBarListItem" >
                             <button className="btn btn-primary btn-sm">
-                                <i class="fas fa-plus"><a class=" font-weight-bold " onClick={()=>props.handleTabSelected('crear')} >Nuevo articulo</a></i>
+                                <i class="fas fa-plus"><a class=" font-weight-bold " onClick={()=>handleNewItem()} >Nuevo articulo</a></i>
                             </button>
                             
                         </li>

@@ -1,4 +1,4 @@
-import React, { Component, useState} from 'react';
+import React, { Component, useState,useEffect} from 'react';
 import { Route,Routes } from 'react-router';
 import Login from './Login/Login';
 import SideBar from './NavBar/SideBar';
@@ -16,9 +16,9 @@ export default function Body(props){
             case 'login':
                 return <Login handleTabSelected={props.handleTabSelected}></Login>;
             case 'inventario':
-                return <ArticuloPage itemSelected={itemSelected} setItemSelected={setItemSelected}></ArticuloPage>
+                return <ArticuloPage itemSelected={itemSelected} setItemSelected={setItemSelected} handleTabSelected={props.handleTabSelected}></ArticuloPage>
             case 'crear':
-                return <NewItem></NewItem>
+                return <NewItem setItemSelected={setItemSelected} handleTabSelected={props.handleTabSelected} itemSelected={itemSelected}></NewItem>
             default:
                 return <div className="col presentation"><img src={fondo} /></div>;
         }
@@ -26,7 +26,9 @@ export default function Body(props){
     }
 
 
-    return(
+    
+
+return(
         <div className="row body " >
             <SideBar tab={props.tab} handleTabSelected={props.handleTabSelected} setItemSelected={setItemSelected} ></SideBar>
             {selectTab(props.tab)}

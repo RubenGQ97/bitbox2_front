@@ -16,14 +16,30 @@ const getItemByCode = async (code) => {
 
 
 
-async function saveItem(json){
+export async function saveItem(json){
         const url = "http://localhost:8080/bitboxer2/articulos/save";
         const response = await axios.post(url,json)
             .catch(error => {
                 console.log(error);
             });
-            return response.status;
+            if(response){
+                console.log(response.status)
+                return response.status;
+            }
+            
 
+}
+
+
+export async function getItem(code){
+    let url = 'http://localhost:8080/bitboxer2/articulos/code/' +code
+    const response = await axios.get(url)
+        .catch(error => {
+            console.log(error)
+        });
+    if (response) {
+        return response.data[0];
+    }
 }
 
 

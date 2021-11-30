@@ -6,6 +6,15 @@ import moment from 'moment';
 
 export default function TablaArticulo(props) {
 
+
+
+    const handleClickOnEdit = (codigo)=>{
+        props.setItemSelected(codigo);
+        props.handleTabSelected('crear')
+    }
+
+
+
     const renderHeader = () => {
         let headerElement = ['', 'Detalles', 'Codigo', 'Descripcion', 'Estado', 'Precio', 'Fecha de Creacion', 'Creador']
 
@@ -25,12 +34,12 @@ export default function TablaArticulo(props) {
                             <ul className="list-inline m-0" >
                                 <li className="list-inline-item" >
                                     <button className="btn btn-success btn-sm rounded-0" type="button">
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-edit" onClick={() =>handleClickOnEdit(codigo)}></i>
                                     </button>
                                 </li>
                                 <li className="list-inline-item" >
                                     <button className="btn btn-danger btn-sm rounded-0" type="button">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-trash" ></i>
                                     </button>
                                 </li>
                             </ul>
