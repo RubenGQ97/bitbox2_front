@@ -23,7 +23,7 @@ export const NewItem = (props) => {
         ]
     })
     const [disponibleSuplier, setDisponibleSuplier] = useState({
-        proveedor:[]
+        proveedor: []
     })
 
 
@@ -35,18 +35,18 @@ export const NewItem = (props) => {
         if (json.idArticulo == "") {
             let aux = [];
             getAllSuplier((suplier) => {
-                suplier.map(proveedores =>{
+                suplier.map(proveedores => {
                     aux.push(proveedores.nombre);
                 })
-                console.log("bbb",aux)
+                console.log("bbb", aux)
             })
-            setDisponibleSuplier({...disponibleSuplier, proveedor:aux})
+            setDisponibleSuplier({ ...disponibleSuplier, proveedor: aux })
 
         } else {
             getOtherSuplier((suplier) => {
-                setDisponibleSuplier({...disponibleSuplier, proveedor:suplier})
-                console.log("aaaa",suplier)
-            },json.idArticulo)
+                setDisponibleSuplier({ ...disponibleSuplier, proveedor: suplier })
+                console.log("aaaa", suplier)
+            }, json.idArticulo)
         }
     }
 
@@ -87,13 +87,17 @@ export const NewItem = (props) => {
 
     const handleSaveChange = async (e) => {
         e.preventDefault();
-        console.log("se intenta guardar nuevo item")
-        setJson({ ...json, codigo: props.itemSelected })
-        let responde = await saveItem(json);
-        if (responde) {
-            props.setItemSelected('');
-            props.handleTabSelected('inventario')
+        if (json.codigo!="" &&json.descripcion!="") {
+            
+            console.log("se intenta guardar nuevo item")
+            setJson({ ...json, codigo: props.itemSelected })
+            let responde = await saveItem(json);
+            if (responde) {
+                props.setItemSelected('');
+                props.handleTabSelected('inventario')
+            }
         }
+
 
     }
 
@@ -111,10 +115,10 @@ export const NewItem = (props) => {
         suplier();
     }, [props.itemSelected])
 
-    
 
 
-    
+
+
 
 
     if (getToken()) {
@@ -166,16 +170,16 @@ export const NewItem = (props) => {
 
                                 </div>
                                 <div class="form-check check_buttons">
-                                    <input class="form-check-input" 
-                                    type="checkbox" 
-                                    checked={json.estado} 
-                                    onChange={(e) => setJson({ ...json, estado: !json.estado })} 
-                                    id="defaultCheck1" />
+                                    <input class="form-check-input"
+                                        type="checkbox"
+                                        checked={json.estado}
+                                        onChange={(e) => setJson({ ...json, estado: !json.estado })}
+                                        id="defaultCheck1" />
                                     <label class="form-check-label" for="defaultCheck1">
                                         Estado
                                     </label>
                                 </div><br />
-                                
+
                                 <input type="submit" value="Guardar" />
                             </form>
                         </div>
