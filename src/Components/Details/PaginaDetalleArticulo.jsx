@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { getSuplier } from '../../Utils/request-helper';
 import '../../Styles/detailItem.css'
 
 export default function PaginaDetalleArticulo(props) {
@@ -12,16 +13,12 @@ export default function PaginaDetalleArticulo(props) {
 
 
 
-    const getSuplier =()=>{
-        return  item?.proveedor.map(function(proveedor){
-            console.log(proveedor.nombre)
-            return (<div>
-                    <a >{proveedor.nombre}</a><br />
-                </div>)
-        });
-        
-        
+
+    const handleBackButton=()=>{
+        props.setItemSelected('');
+        props.handleTabSelected("inventario")
     }
+
 
 
     const getItemByCode = async () => {
@@ -49,8 +46,8 @@ export default function PaginaDetalleArticulo(props) {
 
     return (
         <div>
-            <button className="btn btn-outline btn-lg" type="button">
-                <i class="fas fa-long-arrow-alt-left"></i>
+            <button className="btn btn-outline btn-lg" type="button" onClick={() =>handleBackButton()}>
+                <i class="fas fa-long-arrow-alt-left"  ></i>
             </button>
 
             <div className="row border-top p-0" >
@@ -72,7 +69,7 @@ export default function PaginaDetalleArticulo(props) {
                                 Proveedores
                             </button>
                             <div class="dropdown-menu">
-                                {getSuplier()}
+                                {getSuplier(item)}
                             </div>
                         </div><br />
                         <h2>Oferta: {item?.reduccion[0]?.precio}€</h2> desde el

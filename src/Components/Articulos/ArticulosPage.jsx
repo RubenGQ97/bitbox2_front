@@ -15,7 +15,7 @@ export default function ArticuloPage(props){
     const selected =()=>{
         if(props.itemSelected!="") {
             console.log(props.itemSelected);
-            return <PaginaDetalleArticulo setItemSelected={props.setItemSelected} itemSelected={props.itemSelected} ></PaginaDetalleArticulo>
+            return <PaginaDetalleArticulo  handleTabSelected={props.handleTabSelected} setItemSelected={props.setItemSelected} itemSelected={props.itemSelected} ></PaginaDetalleArticulo>
         }else return <TablaArticulo handleTabSelected={props.handleTabSelected} setItemSelected={props.setItemSelected} articulos={articulos}></TablaArticulo>
     }
 

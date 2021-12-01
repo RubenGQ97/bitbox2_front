@@ -19,17 +19,3 @@
 }
 
 
-
-/*
-    private Integer itemId;
-    private Integer code;
-    private String description;
-    private BigDecimal price;
-    private boolean active;
-    private Date dateOfCreation;
-    private UsuarioDTO creator;
-    private Set<ProveedorDTO> suplier;
-    private Set<ReduccionDTO> reduction;
-
-
-*/ 

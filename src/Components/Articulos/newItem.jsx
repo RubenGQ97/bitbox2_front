@@ -3,6 +3,8 @@ import { getToken } from '../../Utils/auth-helper';
 import { saveItem, getItem } from '../../Utils/request-helper'
 import { getUsername } from '../../Utils/loginService';
 import axios from 'axios';
+import { getAllSuplier } from '../../Utils/request-helper';
+import { getSuplier, getOtherSuplier } from '../../Utils/request-helper';
 import '../../Styles/newItem.css'
 
 export const NewItem = (props) => {
@@ -17,13 +19,42 @@ export const NewItem = (props) => {
             nombre: getUsername(),
         },
         proveedor: [
-            {
-                
-            }
+
         ]
+    })
+    const [disponibleSuplier, setDisponibleSuplier] = useState({
+        proveedor:[]
     })
 
 
+    /**
+     * 
+     * @returns todos los proveedores que opta ese articulo
+     */
+    const suplier = () => {
+        if (json.idArticulo == "") {
+            let aux = [];
+            getAllSuplier((suplier) => {
+                suplier.map(proveedores =>{
+                    aux.push(proveedores.nombre);
+                })
+                console.log("bbb",aux)
+            })
+            setDisponibleSuplier({...disponibleSuplier, proveedor:aux})
+
+        } else {
+            getOtherSuplier((suplier) => {
+                setDisponibleSuplier({...disponibleSuplier, proveedor:suplier})
+                console.log("aaaa",suplier)
+            },json.idArticulo)
+        }
+    }
+
+
+    /**
+     * 
+     * @returns informacion del item
+     */
     const getItemByCode = async () => {
 
         if (props.itemSelected != "") {
@@ -35,7 +66,7 @@ export const NewItem = (props) => {
             if (response) {
                 setJson(response.data[0])
             }
-        }else{
+        } else {
             setJson({
                 idArticulo: "",
                 codigo: "",
@@ -47,29 +78,19 @@ export const NewItem = (props) => {
                     nombre: getUsername(),
                 },
                 proveedor: [
-                    {
 
-                    }
                 ]
             })
         }
-
-
-
     }
 
 
-    useEffect(() => {
-        getItemByCode()
-    }, [props.itemSelected])
-
-
-     const handleSaveChange = async (e) => {
+    const handleSaveChange = async (e) => {
         e.preventDefault();
         console.log("se intenta guardar nuevo item")
         setJson({ ...json, codigo: props.itemSelected })
-        let responde = saveItem(json);
-        if(responde){
+        let responde = await saveItem(json);
+        if (responde) {
             props.setItemSelected('');
             props.handleTabSelected('inventario')
         }
@@ -77,15 +98,34 @@ export const NewItem = (props) => {
     }
 
 
+    const isEdit = () => {
+        if (props.itemSelected == "") return "Nuevo Articulo"
+        return json.descripcion;
+    }
+
+
+
+
+    useEffect(() => {
+        getItemByCode();
+        suplier();
+    }, [props.itemSelected])
+
+    
+
+
+    
+
+
     if (getToken()) {
         return (
             <div className="col">
-                <h2 className=" newItemTitle">Nuevo Articulo</h2>
+                <h2 className=" newItemTitle">{isEdit()}</h2>
                 <div className="row  border "></div>
                 <div className="row  margin" id="formularioNuevoElemento" >
                     <div className="card card-outline-secondary">
                         <div className="card-header">
-                            <h3 className="mb-0">Formulario Nuevo Articulo</h3>
+                            <h3 className="mb-0">{isEdit()}</h3>
                         </div>
                         <div className="card-body">
                             <form onSubmit={(e) => handleSaveChange(e)} className="form">
@@ -125,6 +165,17 @@ export const NewItem = (props) => {
                                     </div>
 
                                 </div>
+                                <div class="form-check check_buttons">
+                                    <input class="form-check-input" 
+                                    type="checkbox" 
+                                    checked={json.estado} 
+                                    onChange={(e) => setJson({ ...json, estado: !json.estado })} 
+                                    id="defaultCheck1" />
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Estado
+                                    </label>
+                                </div><br />
+                                
                                 <input type="submit" value="Guardar" />
                             </form>
                         </div>
